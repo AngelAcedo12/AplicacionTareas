@@ -22,7 +22,6 @@ export class TaskServiceService {
   removeTask(position : number){
     var actualTask  : Task[]= this.loadAllTask();
     actualTask.splice(position)
-    
     this.saveTasks(actualTask)
   }
 }
