@@ -1,12 +1,13 @@
 .task{
     display: flex;
     padding: 1em;
-    flex-direction: column;
+    flex-direction: row;
     background: burlywood;
     border-radius: 1em;
     box-shadow: 0px 5px 5px 5px bisque;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    justify-content: space-between;
 }
 .task:hover{
     background-color: cadetblue;
@@ -20,4 +21,9 @@ p{
     width: 500px;
     color: beige;
     font-size: large
+}
+.items-button-Action{
+    padding: 1em;
+    background-color: bisque;
+    border-radius: 10px;
 }

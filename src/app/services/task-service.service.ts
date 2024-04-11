@@ -19,9 +19,10 @@ export class TaskServiceService {
   saveTasks(task : Task[]) {
     localStorage.setItem("Tasks",JSON.stringify(task))
   }
-  removeTask(position : number){
+  removeTask(position : number): Task[]{
     var actualTask  : Task[]= this.loadAllTask();
     actualTask.splice(position)
     this.saveTasks(actualTask)
+    return this.loadAllTask();
   }
 }

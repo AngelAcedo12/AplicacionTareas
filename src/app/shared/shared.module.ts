@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { TaskComponent } from './task/task.component';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 
 
 
@@ -14,7 +15,8 @@ import { TaskComponent } from './task/task.component';
     TaskComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule
   ]
 })
 export class SharedModule { }

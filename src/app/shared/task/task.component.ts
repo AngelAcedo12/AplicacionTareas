@@ -9,7 +9,7 @@ import { Task } from '../../models/task';
 export class TaskComponent {
   
   @Input({required:true}) task : Task| undefined;
-  
-
+  @Input({required:true}) position : number | undefined;
+  @Input({required:true}) isPreview : boolean | undefined;
 
 }
