@@ -1,0 +1,10 @@
+<section>
+    <ul>
+        @for (task of tasks; track $index) {
+
+            <app-task [id]="$index" [task]="task"></app-task>
+            
+        }
+    </ul>
+   
+</section>

@@ -1,0 +1,23 @@
+.task{
+    display: flex;
+    padding: 1em;
+    flex-direction: column;
+    background: burlywood;
+    border-radius: 1em;
+    box-shadow: 0px 5px 5px 5px bisque;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.task:hover{
+    background-color: cadetblue;
+    transition: all 0.2s ease-in-out;
+}
+h1{
+    color: aliceblue;
+
+}
+p{
+    width: 500px;
+    color: beige;
+    font-size: large
+}
