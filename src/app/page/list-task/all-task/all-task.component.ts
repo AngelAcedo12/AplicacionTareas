@@ -18,7 +18,9 @@ export class AllTaskComponent {
 
   tasks : Task[] | undefined
  
+  refrestList(newList : Task[]){
+    this.tasks=newList
+  }
 
-  
 
 }

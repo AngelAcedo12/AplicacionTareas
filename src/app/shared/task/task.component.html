@@ -1,10 +1,28 @@
-<div class="task"> 
 
-    <div class="items-title-description">
-        <h1 >{{task?.title || "Title"}}</h1>
-        <p>{{task?.descripcion || "Descripcion"}}</p>
+@if (isPreview) {
+    <div class="task"> 
+        <div class="items-title-description">
+            <h1 >{{task?.title || "Title"}}</h1>
+            <p>{{task?.descripcion || "Descripcion"}}</p>
+        </div>
+        <div class="items-button-Action">
+            <button  mat-icon-button><img src="../../../assets/lapiz.png"></button>
+            <button  mat-icon-button><img src="../../../assets/papelera.png"></button>
+            
+        </div>
     </div>
-    <div class="items-button-Action">
-        <button  mat-icon-button><img src="../../../assets/papelera.png"></button>
+    
+}@else {
+    <div class="task"> 
+        <div class="items-title-description">
+            <h1 >{{task?.title || "Title"}}</h1>
+            <p>{{task?.descripcion || "Descripcion"}}</p>
+        </div>
+        <div class="items-button-Action">
+            <a [href]="'task/editTask/'+pos" mat-icon-button><img src="../../../assets/lapiz.png"></a>
+            <button (click)="removedTask(pos!)" mat-icon-button><img src="../../../assets/papelera.png"></button>
+        </div>
     </div>
-</div>
+        
+}
+

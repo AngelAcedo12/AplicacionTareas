@@ -1,5 +1,6 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../models/task';
+import { TaskServiceService } from '../../services/task-service.service';
 
 @Component({
   selector: 'app-task',
@@ -8,8 +9,18 @@ import { Task } from '../../models/task';
 })
 export class TaskComponent {
   
-  @Input({required:true}) task : Task| undefined;
-  @Input({required:true}) position : number | undefined;
-  @Input({required:true}) isPreview : boolean | undefined;
+  constructor(private TaskService : TaskServiceService){
 
+  }
+
+  @Output() newTaskList = new EventEmitter<Task[]>
+  
+  @Input({required:true}) task : Task| undefined;
+  @Input({required:true}) pos : number | undefined;
+  @Input({required:true}) isPreview : boolean | undefined;
+  
+
+  removedTask(position: number){
+    this.newTaskList.emit(this.TaskService.removeTask(position))
+  }
 }

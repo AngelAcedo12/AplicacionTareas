@@ -8,6 +8,9 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     justify-content: space-between;
+    transition: all 0.2s ease-in-out;
+    animation-name: jump;
+    animation-duration: 0.5s;
 }
 .task:hover{
     background-color: cadetblue;
@@ -18,7 +21,7 @@ h1{
 
 }
 p{
-    width: 500px;
+
     color: beige;
     font-size: large
 }
@@ -26,4 +29,17 @@ p{
     padding: 1em;
     background-color: bisque;
     border-radius: 10px;
+    align-items: end;
+}
+
+@keyframes jump {
+    0%,25% {
+        scale: 0.2;
+        opacity: 0;
+    }75%{
+        scale: 1;
+        opacity: 1;
+    }
+
+
 }
