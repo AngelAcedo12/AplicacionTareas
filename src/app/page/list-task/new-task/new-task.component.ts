@@ -32,12 +32,12 @@ export class NewTaskComponent {
 
   postForm(){
       var tasks = this.TaskService.loadAllTask();
-    
+
       if(tasks.length==0){
        
         tasks=[]
         tasks.push(this.actualTask)
-        this.TaskService.saveTasks(tasks);
+       
       }
       tasks.push(this.actualTask)
       this.TaskService.saveTasks(tasks);
