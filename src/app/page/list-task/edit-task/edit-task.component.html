@@ -10,11 +10,19 @@
            
             
         </mat-form-field>
+        <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select  (closed)="onInputTaskStatus()" formControlName="statusTask">
+               @for (statu of status; track $index) {
+                <mat-option [value]="statu">{{statu}}</mat-option>
+               }
+            </mat-select>
+        </mat-form-field>
         <button mat-raised-button (click)="postForm()"> Guardar</button>
     </form>
 
     <div>
-        <app-task [task]="actualTask" [isPreview]="true" [pos]="" ></app-task>
+        <app-task [task]="actualTask" [isPreview]="true" [pos]=""  ></app-task>
     </div>
 
 </section>

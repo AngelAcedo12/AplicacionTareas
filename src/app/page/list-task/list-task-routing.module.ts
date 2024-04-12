@@ -11,6 +11,9 @@ const routes: Routes = [{
       path:'',component: AllTaskComponent
     },
     {
+      path:'all/:status',component:AllTaskComponent
+    },
+    {
     path:'newTask', component:NewTaskComponent
     },
     {

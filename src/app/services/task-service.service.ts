@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task } from '../models/task';
+import { AllTask } from '../models/DtoAllTask';
+import { StatusTask } from '../utils/statusTask';
 
 @Injectable({
   providedIn: 'root'
@@ -9,38 +11,55 @@ export class TaskServiceService {
 
   constructor() { }
   
-  loadAllTask():Task[]{
+
+
+
+  loadAllTask():AllTask{
     
-     return JSON.parse(localStorage.getItem("Tasks")!)
-
-
+    var allTaskNotFilter : Task[]= this.getTasks()
+    var allTask : AllTask = {
+        todoTask:allTaskNotFilter.filter(item => { return item.status==StatusTask.TODO}),
+        doingTask:allTaskNotFilter.filter(item => {return item.status==StatusTask.DOING}),
+        doneTask:allTaskNotFilter.filter(item => {return item.status==StatusTask.DONE})
+    }
+    return allTask;
   }
 
   saveTasks(task : Task[]) {
-    console.log("Guardadando")
+
     localStorage.setItem("Tasks",JSON.stringify(task))
   }
-  removeTask(position : number): Task[]{
-
-    var actualTask  : Task[]= this.loadAllTask();
-    console.log(actualTask[position])
+  removeTask(position : number): Task[]{ 
+   
+    var actualTask : Task[]= JSON.parse(localStorage.getItem("Tasks")!);
+    actualTask[position]
     actualTask= actualTask.filter(obj => {return obj !==  actualTask[position]})
-    console.log(actualTask)
-    this.saveTasks(actualTask)
-    return this.loadAllTask();
+    this.downPositionInList(actualTask)
+    return JSON.parse(localStorage.getItem("Tasks")!);
   }
 
   getOneTask(position: number) : Task {
-    return this.loadAllTask()[position]
+    return this.getTasks()[position]
   }
-  replaceTask(newTask:Task, position: number){
 
-    var tasks = this.loadAllTask()
-    tasks[position].descripcion=newTask.descripcion;
-    tasks[position].title=newTask.title;
+  replaceTask(newTask:Task, position: number){
+    var tasks : Task[]= this.getTasks()
+    var oldTask : Task = tasks[position]
+    oldTask.descripcion=newTask.descripcion;
+    oldTask.title=newTask.title;
+    oldTask.status=newTask.status;
     this.saveTasks(tasks)
     window.alert("Edit succesful")
   }
- 
 
+  getTasks(){
+    return JSON.parse(localStorage.getItem("Tasks")!)
+  }
+ 
+  downPositionInList(tasks:Task[] ){
+    tasks.map((todo,index) => {
+      return todo.positionInList=index;
+    })
+    this.saveTasks(tasks)
+  }
 }

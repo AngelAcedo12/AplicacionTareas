@@ -1,6 +1,7 @@
 .task{
     display: flex;
     padding: 1em;
+    flex-wrap: wrap;
     flex-direction: row;
     background: burlywood;
     border-radius: 1em;
@@ -41,5 +42,18 @@ p{
         opacity: 1;
     }
 
+
+}
+.title-status{
+    display: flex;
+    flex-direction: row;
+    gap:1em;
+    & img{
+        background: bisque;
+        padding: 0.2em;
+        border-radius: 50%;
+        width: 25px;   
+        height: 25px;
+    }
 
 }

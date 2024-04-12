@@ -19,8 +19,7 @@ export class TaskComponent {
   @Input({required:true}) pos : number | undefined;
   @Input({required:true}) isPreview : boolean | undefined;
   
-
-  removedTask(position: number){
+  removedTask(position: number,type:string){
     this.newTaskList.emit(this.TaskService.removeTask(position))
   }
 }

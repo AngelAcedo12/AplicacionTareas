@@ -3,6 +3,7 @@ import { TaskServiceService } from '../../../services/task-service.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Task } from '../../../models/task';
 import { ActivatedRoute } from '@angular/router';
+import { StatusTask } from '../../../utils/statusTask';
 
 @Component({
   selector: 'app-edit-task',
@@ -26,9 +27,15 @@ export class EditTaskComponent {
   
   formTask  = new FormGroup({
     titleTask: new FormControl(''),
-    descripcionTask: new FormControl('')
+    descripcionTask: new FormControl(''),
+    statusTask: new FormControl('TODO')
   })
-  
+  status: string[] = [
+    StatusTask.TODO,
+    StatusTask.DOING,
+    StatusTask.DONE,
+
+  ]
   actualTask: Task|undefined;
   
   
@@ -41,7 +48,10 @@ export class EditTaskComponent {
     this.actualTask!.descripcion=this.formTask.value.descripcionTask || "";
     
   }
+  onInputTaskStatus(){
+    this.actualTask!.status=this.formTask.value.statusTask ||"";
+  }
   postForm() {
-    this.TaskService.replaceTask(this.actualTask!,this.id!)
+    this.TaskService.replaceTask(this.actualTask!,this.actualTask!.positionInList)
   }
 }

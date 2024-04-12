@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TaskServiceService } from '../../../services/task-service.service';
 import { Task } from '../../../models/task';
+import { AllTask } from '../../../models/DtoAllTask';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-all-task',
@@ -9,17 +11,26 @@ import { Task } from '../../../models/task';
 })
 export class AllTaskComponent {
 
-  constructor(private TaskService : TaskServiceService){
+  constructor(private TaskService : TaskServiceService, private route : ActivatedRoute){
   }
   ngOnInit(): void {
    this.tasks=this.TaskService.loadAllTask();
 
+    this.filterStatus = this.route.snapshot.params["status"]
+    if(this.filterStatus==undefined){
+      this.filterStatus="NONE"
+    }
+
+
   }
 
-  tasks : Task[] | undefined
+  filterStatus : string | undefined;
+
+
+  tasks : AllTask | undefined
  
-  refrestList(newList : Task[]){
-    this.tasks=newList
+  refrestList(){
+    this.tasks=this.TaskService.loadAllTask()
   }
 
 

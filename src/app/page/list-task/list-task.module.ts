@@ -9,13 +9,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormField, MatLabel} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input'
 import {MatButtonModule} from '@angular/material/button'
-import { SharedModule } from '../../shared/shared.module';
+import { ComponentsModule } from '../../components/components.module';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({ 
   declarations: [
     NewTaskComponent,
     AllTaskComponent,
     EditTaskComponent,
-    LayautTaskComponent
+    LayautTaskComponent,
+    
   ],exports:[AllTaskComponent],
   imports: [
     CommonModule,
@@ -25,7 +27,9 @@ import { SharedModule } from '../../shared/shared.module';
     MatLabel,
     MatInputModule,
     MatButtonModule,
-    SharedModule
+    ComponentsModule,
+    MatSelectModule
+
   ],providers:[
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
   ]
