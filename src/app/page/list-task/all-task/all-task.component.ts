@@ -11,10 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AllTaskComponent {
 
-  constructor(private TaskService : TaskServiceService, private route : ActivatedRoute){
+  constructor(private route : ActivatedRoute){
   }
   ngOnInit(): void {
-   this.tasks=this.TaskService.loadAllTask();
+
 
     this.filterStatus = this.route.snapshot.params["status"]
     if(this.filterStatus==undefined){
@@ -27,11 +27,6 @@ export class AllTaskComponent {
   filterStatus : string | undefined;
 
 
-  tasks : AllTask | undefined
  
-  refrestList(){
-    this.tasks=this.TaskService.loadAllTask()
-  }
-
 
 }
